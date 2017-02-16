@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-<<<<<<< HEAD
     <style>
         .odd {
             background-color: #fafafa;
@@ -13,10 +12,6 @@
             background-color: silver
         }
     </style>
-    <link rel="stylesheet" href="css/mystyles.css" />
-=======
-
->>>>>>> 181a7369b8e6655251bc33829cb160d4347e9a00
 </head>
 
 <body>
@@ -25,7 +20,7 @@
             <label>
             <input type="radio" ng-model="data.mode" value="{{button.value}}" name="modes" />
             {{button.label}}
-            </label>
+        </label>
         </div>
         <div ng-switch on="data.mode">
             <div ng-switch-when="Tablets">
@@ -52,43 +47,11 @@
         </div>
     </div>
 
-    <div ng-controller = "phoneController">
-        <p ng-style = "somestyle">ng-style</p>
-        <p ng-class = "someclass">ng-class</p>
-    </div>
-    
-    <!--QUESTIONS-->
-    <div  ng-controller="QuestionController">
-        <div class="quest" ng-class="questColorClass"
-                ng-mouseenter="changeClass($event)"
-                ng-mouseleave="changeClass($event)">
-            <h3>{{question.text}}</h3>
-            <p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
-        </div>
-        <h3>Ответы</h3>
-        <div class="answers">
-            <div ng-repeat="answer in question.answers" class="answer">
-            <div class="vote">
-                <a class="vote-up" ng-click="voteUp(answer)"></a>
-                <span class="rate">{{answer.rate}}</span>
-                <a class="vote-down" ng-click="voteDown(answer)"></a>
-            </div>
-            <b>{{answer.text}}</b>
-            <p>{{answer.author}}</p>
-            <p><i>{{answer.date}}</i></p>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    
     <script src=" js/lib/angular.min.js "></script>
     <script type="text/javascript ">
         var myApp = angular.module('myApp', []);
     </script>
     <script src="js/controllers/phonesController.js "></script>
-    <script src="js/controllers/questionController.js "></script>
 </body>
 
 </html>

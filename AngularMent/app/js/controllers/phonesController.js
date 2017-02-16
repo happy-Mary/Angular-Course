@@ -48,4 +48,6 @@ myApp.controller('phoneController', function($scope) {
         value: 'Phones',
         label: 'Смартфоны'
     }];
+
+    
 });

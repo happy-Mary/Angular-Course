@@ -15,31 +15,36 @@
 </head>
 
 <body>
-    <!--<div ng-controller="phoneController">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Модель</th>
-                    <th>Цена</th>
-                </tr>
-            </thead>
-            <tr ng-repeat="phone in phones" ng-class="$odd ? 'odd' : 'even' ">
-                <td>{{$index+1}}</td>
-                <td>{{phone.name}}</td>
-                <td>{{phone.price}}</td>
-            </tr>
-        </table>
-    </div>-->
-
     <div ng-controller="phoneController">
         <div ng-repeat="button in modes">
             <label>
-                <input type="radio" ng-model ="data.mode" value = "{{button.value}}" name="modes"/>
-                {{button.label}}
-            </label>
+            <input type="radio" ng-model="data.mode" value="{{button.value}}" name="modes" />
+            {{button.label}}
+        </label>
         </div>
-        <div ng-include="setFile()"></div>
+        <div ng-switch on="data.mode">
+            <div ng-switch-when="Tablets">
+                <ul>
+                    <li ng-repeat="tablet in tablets">
+                        <b>{{tablet.name}}</b>
+                        <p>Цена: {{tablet.price}} $</p>
+                        <p>Производитель: {{tablet.company}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div ng-switch-when="Phones">
+                <ul>
+                    <li ng-repeat="phone in phones">
+                        <b>{{phone.name}}</b>
+                        <p>Цена: {{phone.price}} $</p>
+                        <p>Производитель: {{phone.company}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div ng-switch-default>
+                Выберите товары для просмотра
+            </div>
+        </div>
     </div>
 
     <script src=" js/lib/angular.min.js "></script>

@@ -1,12 +1,12 @@
-var myApp = angular.module("myApp");
-myApp.controller("QuestionController", function($scope){
-    $scope.question = {
+var myApp=angular.module('myApp');
+myApp.controller('QuestionController', function($scope) {
+
+  $scope.question={
         text: 'Какой js-фреймворк лучше использовать?',
         author: 'Иван Иванов',
         date: '20/10/2013',
-        answers: 
-        [
-            {
+        answers:
+        [{
             text: 'AngularJS!',
             author: 'Вова Сидоров',
             date: '20/10/2013',
@@ -22,19 +22,17 @@ myApp.controller("QuestionController", function($scope){
             date: '21/10/2013',
             rate:0
         }]
-    };
-    
-    $scope.voteUp = function(answer){
+    },
+     
+    $scope.voteUp = function (answer){
         answer.rate++;
     };
-    
-    $scope.voteDown = function(answer){
-        answer.rote--;
+    $scope.voteDown = function (answer){
+        answer.rate--;
     };
-    
-    $scope.questColorClass= "questcolor";
-    
-    $scope.changeClass = function(e) {
-        $scope.questColorClass = e.type == "mouseover"?"questselectedcolor":"questcolor";
-    }
+	$scope.questColorClass= "questcolor";
+	$scope.changeClass = function (e) {
+		
+		$scope.questColorClass = e.type == "mouseover" ? "questselectedcolor" : "questcolor";
+	}
 });

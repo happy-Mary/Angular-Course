@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .odd {
+            background-color: #fafafa;
+        }
+        
+        .even {
+            background-color: silver
+        }
+    </style>
+</head>
+
+<body>
+    <!--<div ng-controller="phoneController">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Модель</th>
+                    <th>Цена</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="phone in phones" ng-class="$odd ? 'odd' : 'even' ">
+                <td>{{$index+1}}</td>
+                <td>{{phone.name}}</td>
+                <td>{{phone.price}}</td>
+            </tr>
+        </table>
+    </div>-->
+
+    <div ng-controller="phoneController">
+        <div ng-repeat="button in modes">
+            <label>
+                <input type="radio" ng-model ="data.mode" value = "{{button.value}}" name="modes"/>
+                {{button.label}}
+            </label>
+        </div>
+        <div ng-include="setFile()"></div>
+    </div>
+
+    <script src=" js/lib/angular.min.js "></script>
+    <script type="text/javascript ">
+        var myApp = angular.module('myApp', []);
+    </script>
+    <script src="js/controllers/phonesController.js "></script>
+</body>
+
+</html>

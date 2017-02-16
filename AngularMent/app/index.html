@@ -3,15 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <style>
-        .odd {
-            background-color: #fafafa;
-        }
-        
-        .even {
-            background-color: silver
-        }
-    </style>
+
 </head>
 
 <body>
@@ -20,7 +12,7 @@
             <label>
             <input type="radio" ng-model="data.mode" value="{{button.value}}" name="modes" />
             {{button.label}}
-        </label>
+            </label>
         </div>
         <div ng-switch on="data.mode">
             <div ng-switch-when="Tablets">

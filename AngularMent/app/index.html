@@ -1,76 +1,47 @@
 <!doctype html>
-<html ng-app="myApp">
-
+<html ng-app="questApp">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/mystyles.css" />
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/mystyles.css" />
 </head>
-
 <body>
-    <div ng-controller="phoneController">
-        <div ng-repeat="button in modes">
-            <label>
-            <input type="radio" ng-model="data.mode" value="{{button.value}}" name="modes" />
-            {{button.label}}
-            </label>
+<div  ng-controller="QuestionController">
+    <div class="quest">
+        <h3>{{question.text}}</h3>
+        <p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
+    </div>
+    <h3>Ответы</h3>
+    <div class="answers">
+        <div ng-repeat="answer in question.answers" class="answer">
+        <div class="vote">
+            <a class="vote-up" ng-click="voteUp(answer)"></a>
+            <span class="rate">{{answer.rate}}</span>
+            <a class="vote-down" ng-click="voteDown(answer)"></a>
         </div>
-        <div ng-switch on="data.mode">
-            <div ng-switch-when="Tablets">
-                <ul>
-                    <li ng-repeat="tablet in tablets">
-                        <b>{{tablet.name}}</b>
-                        <p>Цена: {{tablet.price}} $</p>
-                        <p>Производитель: {{tablet.company}}</p>
-                    </li>
-                </ul>
-            </div>
-            <div ng-switch-when="Phones">
-                <ul>
-                    <li ng-repeat="phone in phones">
-                        <b>{{phone.name}}</b>
-                        <p>Цена: {{phone.price}} $</p>
-                        <p>Производитель: {{phone.company}}</p>
-                    </li>
-                </ul>
-            </div>
-            <div ng-switch-default>
-                Выберите товары для просмотра
-            </div>
+        <b>{{answer.text | formatText}}</b>
+        <p>{{answer.author}}</p>
+        <p><i>{{answer.date}}</i></p>
         </div>
     </div>
-    
-    <!--QUESTIONS-->
-   <div  ng-controller="QuestionController">
-        <div class="quest" ng-class="questColorClass"
-            ng-mouseenter="changeClass($event)"
-            ng-mouseleave="changeClass($event)">
-            <h3>{{question.text}}</h3>
-            <p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
-        </div>
-        <h3>Ответы</h3>
-        <div class="answers">
-            <div ng-repeat="answer in question.answers" class="answer" >
-            <div class="vote">
-                <a class="vote-up" ng-click="voteUp(answer)"></a>
-                <span class="rate">{{answer.rate}}</span>
-                <a class="vote-down" ng-click="voteDown(answer)"></a>
-            </div>
-                <b>{{answer.text}}</b>
-                <p>{{answer.author}}</p>
-                <p><i>{{answer.date}}</i></p>
-            </div>
-        </div>
 </div>
-    
-    
-    
-    
-    <script src=" js/lib/angular.min.js "></script>
-    <script type="text/javascript ">
-        var myApp = angular.module('myApp', []);
-    </script>
-    <script src="js/controllers/phonesController.js "></script>
-    <script src="js/controllers/questionController.js "></script>
+<div ng-controller="AnswerController">
+    <form action="post" name="answerForm">
+        <fieldset>
+            <p><label for="answerText">Текст ответа</label>
+            <input type="text" id="answerText" ng-model="answer.text" required placeholder="Введите ответ"/></p>
+            <p><label for="answerAuthor"></label>
+            <input type="text" id="answerAuthor" ng-model="answer.author" required placeholder="Введите автора"></p>
+            <p><label for="answerDate"></label>
+            <input type="text" id="answerDate" ng-model="answer.date" required 
+                   ng-pattern="/\d\d/\d\d/\d\d\d\d/" placeholder="Введите дату"></p>
+        </fieldset>
+        <button type="submit" ng-click="save(answer, answerForm)">Сохранить</button>
+    </form>
+</div>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/questionController.js"></script>
+<script src="js/controllers/AnswerController.js"></script>
+<script src="js/filter.js"></script>
 </body>
-
 </html>

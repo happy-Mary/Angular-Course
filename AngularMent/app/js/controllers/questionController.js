@@ -1,6 +1,5 @@
 questApp.controller('QuestionController', 
 	function QuestionController($scope){
-	
 		$scope.question={
 			text: 'Какой js-фреймворк лучше использовать?',
 			author: 'Иван Иванов',

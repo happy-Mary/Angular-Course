@@ -1,1 +1,1 @@
-var questApp = angular.module("questApp", []);
+var questApp = angular.module('questApp', []);

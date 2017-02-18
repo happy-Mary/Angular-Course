@@ -10,7 +10,26 @@
 <h3>{{question.text}}</h3>
 <p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
 </div>
+<<<<<<< HEAD
 <div answer-list><h3>Ответы</h3></div>
+=======
+
+<div class="answers">
+<div ng-repeat="answer in question.answers" class="answer">
+<div class="vote">
+    <a class="vote-up" ng-click="voteUp(answer)"></a>
+    <span class="rate">{{answer.rate}}</span>
+    <a class="vote-down" ng-click="voteDown(answer)"></a>
+</div>
+<b>{{answer.text | formatText}}</b>
+<p>{{answer.author}}</p>
+<p><i>{{answer.date}}</i></p>
+</div>
+</div>
+<div answer-list><h3>Ответы</h3></div>
+<answer-list source="question" />
+<div class="answer-list: question"></div>
+>>>>>>> 78e10fb4bb855f8005f503c9a8a5cde280e26645
 </div>
 
 <script src="js/lib/angular.min.js"></script>

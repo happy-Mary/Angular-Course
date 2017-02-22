@@ -1,6 +1,6 @@
-﻿var todoModel = (function () {
+var todoModel = (function () {
 
-    var _data = [];
+     var _data = [];
 
     function _addItem(name, duedate, description, completed) {
         _data.push({

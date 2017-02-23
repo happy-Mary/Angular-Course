@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app = "appTodo">
 <head>
     <title>ToDo List (Task2)</title>
@@ -11,7 +11,7 @@
         // Добавьте AngularJS контроллер
         var appTodo = angular.module("appTodo", []);
         appTodo.controller("TodoCtrl", function($scope){
-            $scope.tasks = todoModel.data;
+            $scope.tasks = todoModel.read();
             
             $scope.addItem = function(name, duedate, description, completed){
                 todoModel.addItem(name, duedate, description, completed);

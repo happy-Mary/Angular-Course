@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app = "calcApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculation</title>
+        <script src="../Libraries/angular.js"></script>
+        <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+        <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+        
+        <script>
+            var calcApp = angular.module("calcApp", []);
+            calcApp.controller("CalcCtrl", function($scope){
+                $scope.firstNum = 2;
+                $scope.secNum = 3;
+                $scope.result = 0;
+                
+                $scope.add = function(){
+                    $scope.result = $scope.firstNum+$scope.secNum;
+                }
+                
+                $scope.subtr = function(){
+                    $scope.result = $scope.firstNum-$scope.secNum;
+                }
+                $scope.mult = function(){
+                      $scope.result = $scope.firstNum*$scope.secNum; 
+                }
+                $scope.divide = function(){
+                    $scope.result = $scope.firstNum/$scope.secNum;
+                }
+            });
+        </script>
+</head>
+<body>
+    <div class="container panel panel-default" ng-controller="CalcCtrl">
+        <form>
+            <div class="form-group">
+                <input class = "text-center" type="number" name="num1" value = "{{firstNum}}" ng-model="firstNum"/>
+                <input class = "text-center" type="number" name="num2" value = "{{secNum}}" ng-model="secNum"/>
+            </div>
+            <div>
+                <button class="btn btn-default" ng-click="add()">+</button>
+                <button class="btn btn-default" ng-click="subtr()">-</button>
+                <button class="btn btn-default" ng-click="mult()">*</button>
+                <button class="btn btn-default" ng-click="divide()">/</button>
+            </div>
+        </form>
+        <p class = "h3" ng-model="result">Result: {{result}}</p>
+    </div>
+</body>
+</html>

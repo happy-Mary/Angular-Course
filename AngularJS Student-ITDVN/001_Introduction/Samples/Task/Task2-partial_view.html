@@ -17,33 +17,46 @@
                 todoModel.addItem(name, duedate, description, completed);
                 todoModel.save();
             }
+            
+            $scope.text;
+            $scope.showDescription = function(description) { 
+                $scope.text = description;
+            }
         });
     </script>
 </head>
 <body ng-controller="TodoCtrl">
 
     <div class="container">
-
+      <div class="row">
         <h3>ToDo List</h3>
-
+        <div class="col-sm-6">
         <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
                     <th>Date</th>
                     <th>Completed</th>
                 </tr>
             </thead>
             <tr ng-repeat="task in tasks">
                     <td>{{task.name}}</td>
-                    <td>{{task.description}}</td>
                     <td>{{task.duedate}}</td>
                     <td>{{task.completed}}</td>
+                    <td><button class="btn btn-primary" ng-click = "showDescription(task.description)">
+                        Details</button></td>
                 </tr>
         </table>
+        </div>
+        
+        <div class="col-sm-5" style="border: 1px solid black; margin-top: 4em;" ng-switch-on="task.description">
+            <p ng-switch when = "task.description"> {{text}}</p>
+        </div>
 
-        <div>
+      </div>
+        
+        
+        <div class = "row">
             <!-- Форма для добавления новых задач -->
             <form>
                 <div class="form-group">

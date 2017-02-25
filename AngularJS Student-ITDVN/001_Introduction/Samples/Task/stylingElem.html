@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="styleApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Style Text</title>
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+        button {margin: .5em;}
+        
+        .first {
+            color: green;
+            font-weight: bold;
+        } 
+        .second {
+            color: yellow;
+            background: blue;
+            font-style: italic;
+        }
+        
+        .third {
+            color: #fff;
+            background: #000;
+            opacity: .7;
+            font-size: 25px;
+        }
+    </style>
+    <script>
+        var styleApp = angular.module("styleApp", [])
+            .controller("styleCtrl", function($scope){
+                $scope.Classes = [
+                   {text: "First Style", type:"first"},
+                   {text: "Second Style", type:"second"},
+                   {text: "Third Style", type:"third"}
+                ];
+                $scope.currClass;
+                $scope.setClass=function(class_type){
+                    $scope.currClass = class_type;
+                }
+            });
+    </script>
+</head>
+<body ng-controller = "styleCtrl">
+    <div class="container text-center">
+        <div class="panel panel-primary">
+        <div class="panel-heading">
+            <button class="btn btn-default" ng-repeat="class in Classes" ng-click="setClass(class.type)">{{class.text}}</button>
+        </div>
+        <div class="panel-body">
+            <p class="well col-sm-6 col-sm-offset-3 text-main" ng-class = "currClass">
+            Рассказывают, что древние греки очень любили виноград и после его сбора устраивали праздник в 
+            честь бога винограда Диониса. Свиту Диониса составляли козлоногие существа – сатиры. Изображая их,
+            эллины надевали козлиные шкуры, бешено скакали и пели – словом, самозабвенно предавались веселью. 
+            Такие представления назывались трагедиями, что по-древнегречески означало «пение козлов». 
+            Впоследствии эллины призадумались: чему бы еще посвятить такие игрища?
+            Простым людям всегда было интересно знать, как живут богатые. Драматург Софокл начал писать пьесы
+            про царей, и сразу стало ясно: цари и те часто плачут и личная жизнь у них небезопасна и 
+            отнюдь не проста. А для того чтобы придать повествованию занимательности, Софокл решил привлечь 
+            актеров, которые смогли бы сыграть его произведения, – так появился театр.
+            Вначале поклонники искусства были очень недовольны: действие видели только те, кто сидел в первом
+            ряду, и, поскольку билеты тогда еще не были предусмотрены, лучшие места занимали самые сильные и рослые. 
+            Тогда эллины решили устранить это неравноправие и построили амфитеатр, где каждый следующий ряд был выше предыдущего,
+            и всё, что происходило на сцене, стало видно всем пришедшим на представление.
+            </p>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -34,7 +34,8 @@
                     </div>
                     <div class="form-group">
                         <label for="emailField">Email:</label>
-                        <input type="mail" class="form-control" name="emailField" required>
+                        <input type="mail" class="form-control" name="emailField" required ng-model="emailField">
+                        <span ng-show="registerForm.emailField.$touched && registerForm.emailField.$invalid">* Wrong mail.</span>
                     </div>
                     <div class="form-group">
                         <label for="telField">Номер телефона:</label>

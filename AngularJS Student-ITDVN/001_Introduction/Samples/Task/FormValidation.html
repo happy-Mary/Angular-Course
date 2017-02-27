@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="formApp">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM</title>
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+    input+span {
+        color: red;
+    }
+    </style>
+    <script>
+        var formApp = angular.module("formApp", [])
+            .controller("formCtrl", function($scope){
+                
+            });
+    </script>
+
+    </head>
+<body ng-controller="formCtrl">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h1 class="text-uppercase">регистрация</h1>
+            </div>
+            <div class="panel-body">
+                <form class= "col-sm-6 col-sm-offset-3" name="registerForm" novalidate>
+                    <div class="form-group">
+                        <label for="nameField">ФИО:</label>
+                        <input type="text" class="form-control" name="nameField" required ng-model="nameField">
+                        <span ng-show="registerForm.nameField.$touched && registerForm.nameField.$invalid">*The name is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailField">Email:</label>
+                        <input type="mail" class="form-control" name="emailField" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telField">Номер телефона:</label>
+                        <input type="tel" class="form-control" name="telField" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordField">Пароль:</label>
+                        <input type="password" class="form-control" name="passwordField" ng-model="passwordField" ng-pattern="[a-z]" required>
+                        <span ng-show="registerForm.passwordField.$touched && registerForm.passwordField.$invalid">*Invalid.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmField">Подтверждение пароля:</label>
+                        <input type="password" class="form-control" name="confirmField" required>
+                    </div>
+                    <button type="submit" class = "btn btn-primary" ng-disabled="registerForm.$invalid">Зарегиться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

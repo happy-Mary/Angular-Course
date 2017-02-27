@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Каша Test</title>
     <script src="../Libraries/angular.js"></script>
-    <script src="spa.js"></script> 
+    <script src="spa-test.js"></script> 
     
     <link href="../Libraries/bootstrap.css" rel="stylesheet" />
     <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
@@ -13,12 +13,6 @@
         testApp.controller("testCtrl", function($scope) {
         $scope.data = {};
         $scope.tasks = tasks;
-       
-        $scope.answers_1 = question1;
-        $scope.answers_2 = question2;
-        $scope.answers_3 = question3;
-        $scope.answers_4 = question4;
-        $scope.answers_5 = question5;
     });
 
 
@@ -42,35 +36,35 @@
               <!--ANSWERS-->
               <div class="well" ng-switch on = "data.task">
                     <div ng-switch-default><span class = "lead">Выберите вопрос, на который желаете ответить</span></div>
-                    <div class="radio" ng-switch-when = "1" ng-repeat = "answer in answers_1">
+                    <div class="radio" ng-switch-when = "1" ng-repeat = "answer in tasks[0].answers">
                           <label>
                             <input type="radio" name="answer" value="$index">
                             {{answer}}
                            </label><br/>
                     </div>
                     
-                    <div class="radio" ng-switch-when = "2" ng-repeat = "answer in answers_2">
+                    <div class="radio" ng-switch-when = "2" ng-repeat = "answer in tasks[1].answers">
                           <label>
                             <input type="radio" name="answer" value="$index">
                             {{answer}}
                            </label><br/>
                     </div>
                     
-                    <div class="radio" ng-switch-when = "3" ng-repeat = "answer in answers_3">
+                    <div class="radio" ng-switch-when = "3" ng-repeat = "answer in tasks[2].answers">
                           <label>
                             <input type="radio" name="answer" value="$index">
                             {{answer}}
                            </label><br/>
                     </div>
                     
-                    <div class="radio" ng-switch-when = "4" ng-repeat = "answer in answers_4">
+                    <div class="radio" ng-switch-when = "4" ng-repeat = "answer in tasks[3].answers">
                           <label>
                             <input type="radio" name="answer" value="$index">
                             {{answer}}
                            </label><br/>
                     </div>
                     
-                    <div class="radio" ng-switch-when = "5" ng-repeat = "answer in answers_5">
+                    <div class="radio" ng-switch-when = "5" ng-repeat = "answer in tasks[4].answers">
                           <label>
                             <input type="radio" name="answer" value="$index">
                             {{answer}}
